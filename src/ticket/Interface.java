@@ -46,3 +46,4 @@ public class Interface {
 	}
 
 }
+//Nicolaus du fetter Hund stalk niet meine Programmer btw schreib ma wenn de Nachricht sigsch
