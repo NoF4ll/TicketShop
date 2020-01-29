@@ -47,7 +47,7 @@ public class Interface {
 						System.out.println("Passwort : ");
 						password = sc.next();
 						
-						if(User.usernameCheck(username)&&User.passwordCheck(password))
+						if(User.usernameCheck(username)&&User.passwordCheck(password)&&User.userCount==User.passwordCount)
 						{
 							ok = true;
 						}

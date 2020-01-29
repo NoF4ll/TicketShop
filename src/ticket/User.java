@@ -6,11 +6,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class User {
-	String getUsername() {
 
-		return "ss";
-	}
+public class User {
+	
+	static int userCount = 0;
+	static int passwordCount = 0;
 
 	public static void usernameAndPassword(String username, String password) {
 		FileWriter fw;
@@ -32,9 +32,11 @@ public class User {
 
 	public static boolean usernameCheck(String username) {
 		try {
+			userCount = 0;
 			File us = new File("C:\\Users\\Maximilian Neuner\\Documents\\JavaTxtFiles\\usernames.txt");
 			Scanner myReader = new Scanner(us);
 			while (myReader.hasNextLine()) {
+				userCount++;
 				String data = myReader.nextLine();
 				if (data.equals(username)) {
 					myReader.close();
@@ -50,9 +52,11 @@ public class User {
 
 	public static boolean passwordCheck(String password) {
 		try {
+			passwordCount = 0;
 			File pw = new File("C:\\Users\\Maximilian Neuner\\Documents\\JavaTxtFiles\\password.txt");
 			Scanner myReader = new Scanner(pw);
 			while (myReader.hasNextLine()) {
+				passwordCount++;
 				String data = myReader.nextLine();
 				if (data.equals(password)) {
 					myReader.close();
