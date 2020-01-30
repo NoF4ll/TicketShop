@@ -1,10 +1,12 @@
 package ticket;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Interface {
 	static Scanner sc = new Scanner(System.in);
+	static Console console = System.console();
 	static boolean check = false;
 	static boolean login = false;
 	static int preis;
@@ -19,9 +21,9 @@ public class Interface {
 		StandartTicket[] tickets = new StandartTicket[3];
 		ArrayList<StandartTicket> warenkorb = new ArrayList<StandartTicket>();
 
-		tickets[0] = new StandartTicket(30, TicketType.KONZERTKARTE);
-		tickets[1] = new StandartTicket(50, TicketType.FESTIVALKARTE);
-		tickets[2] = new StandartTicket(15, TicketType.SPORTVERANSTALTUNG);
+		tickets[0] = new StandartTicket(30,50, TicketType.KONZERTKARTE);
+		tickets[1] = new StandartTicket(50,40, TicketType.FESTIVALKARTE);
+		tickets[2] = new StandartTicket(15,39, TicketType.SPORTVERANSTALTUNG);
 		while (check == false) {
 			while(login == false)
 			{
@@ -59,9 +61,10 @@ public class Interface {
 			
 			}
 				System.out.println("Was für Ticket wollen sie kaufen? ");
+				System.out.println("");
 			for (int i = 0; i < tickets.length; i++) {
 				System.out
-						.println("Drücken Sie " + (i + 1) + " um ein " + tickets[i].tickettype.typ + " hinzuzufügen!");
+						.println("Drücken Sie " + (i + 1) + " um ein " + tickets[i].tickettype.typ + " hinzuzufügen! "+tickets[i].getAnzahl()+" Tickets übrig!");
 			}
 			int eingabe = sc.nextInt();
 			try {
@@ -84,6 +87,7 @@ public class Interface {
 				tickets[eingabe - 1].setPreis(preisCalc * tickets[eingabe - 1].getPreis());
 			}
 			System.out.println("Du hast einmal " + tickets[eingabe - 1].tickettype.typ + "zum Warenkorb hinzugefügt!");
+			tickets[eingabe-1].setAnzahl(tickets[eingabe-1].getAnzahl()-1);
 			warenkorb.add(tickets[eingabe - 1]);
 			System.out.println("Wollen Sie ein weiteres Ticket kaufen?\n Drücken Sie j für Ja und n für Nein");
 			String antwort = sc.next();
